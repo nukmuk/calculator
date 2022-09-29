@@ -47,6 +47,12 @@ document.querySelector(".sign").addEventListener("click", () => {
 	setDisplayValue(negative);
 });
 
+// percent key
+document.querySelector(".percent").addEventListener("click", () => {
+	const percent = state.displayValue / 100;
+	setDisplayValue(percent);
+});
+
 // operator key events
 const operators = document.querySelectorAll(".operator");
 for (const btn of operators) {
