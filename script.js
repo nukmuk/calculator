@@ -64,31 +64,6 @@ equalsBtn.addEventListener("click", () => {
 	const result = finalizePending();
 	setDisplayValue(result);
 	state.inputtingB = false;
-
-	/*
-	let operation = state.pendingOperation;
-
-	if (!operation && !state.lastOperation) {
-		return;
-	}
-
-	if (!operation) {
-		operation = state.lastOperation;
-	} else {
-		b = state.displayValue;
-		console.log("Set b to: " + b);
-	}
-
-	const result = operate(operation, a, b);
-	console.log(`result: ${result}`);
-	a = result;
-	memory = Number(result);
-	console.log(`memory: ${state.memory}`);
-	console.log("newValue (a): " + a);
-	setDisplayValue(a);
-	state.pendingOperation = undefined;
-	state.lastOperation = operation;
-    */
 });
 
 // functions
@@ -116,9 +91,6 @@ function numberPressed(number) {
 function setDisplayValue(value) {
 	const length = String(value).length;
 	let fontSize = 96;
-
-	// const factor = 1000000000;
-	// value = Math.round(value * factor) / factor;
 
 	const limit = 7;
 	if (length > limit) {
