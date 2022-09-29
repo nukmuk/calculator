@@ -41,6 +41,12 @@ clearBtn.addEventListener("click", () => {
 	changeKeyColor();
 });
 
+// plusminus key
+document.querySelector(".sign").addEventListener("click", () => {
+	const negative = state.displayValue * -1;
+	setDisplayValue(negative);
+});
+
 // operator key events
 const operators = document.querySelectorAll(".operator");
 for (const btn of operators) {
