@@ -35,8 +35,6 @@ clearBtn.addEventListener("click", () => {
 const operators = document.querySelectorAll(".operator");
 for (const btn of operators) {
 	btn.addEventListener("click", () => {
-		// START ADDING CHAINING FROM SOMEWHERE HERE
-
 		const btnOperation = btn.classList[1];
 		console.log(`click operator, pstate: ${state.pendingOperation}`);
 		if (state.pendingOperation) {
@@ -113,29 +111,16 @@ function operate(operation, x, y) {
 
 	switch (operation) {
 		case "add":
-			return add(x, y);
+			return x + y;
 		case "subtract":
-			return subtract(x, y);
+			return x - y;
 		case "multiply":
-			return multiply(x, y);
+			return x * y;
 		case "divide":
-			return divide(x, y);
+			return x / y;
 
 		default:
 			console.log(`Invalid operation: ${operation}`);
 			break;
 	}
-}
-
-function add(x, y) {
-	return x + y;
-}
-function subtract(x, y) {
-	return x - y;
-}
-function multiply(x, y) {
-	return x * y;
-}
-function divide(x, y) {
-	return x / y;
 }
