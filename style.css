@@ -20,6 +20,9 @@ body {
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
+	height: 25%;
+	background: #454647;
+	flex: none;
 }
 
 .sys-buttons {
@@ -49,9 +52,7 @@ body {
 
 .result {
 	margin: 0px 28px 10px 0px;
-	/* font-size: 96px; */
-	font-size: 6rem;
-	width: 2em;
+	font-size: 96px;
 	align-self: flex-end;
 }
 
@@ -73,7 +74,8 @@ body {
 .special,
 .number,
 .dot,
-.operator {
+.operator,
+.equals {
 	border-style: solid;
 	border-color: #454647;
 	border-width: 1px;
@@ -122,12 +124,8 @@ body {
 	flex-direction: column-reverse;
 }
 
-.operator {
+.operator,
+.equals {
 	background: #ff9f09;
 	flex: 1;
-}
-
-.screen {
-	height: 25%;
-	background: #454647;
 }
