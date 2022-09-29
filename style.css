@@ -1,0 +1,133 @@
+body {
+	background-color: #151515;
+	color: white;
+}
+
+.calculator {
+	display: flex;
+	flex-direction: column;
+	margin: 32px;
+	width: 460px;
+	height: 640px;
+	border-radius: 20px;
+	overflow: hidden;
+
+	font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
+		sans-serif;
+}
+
+.screen {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.sys-buttons {
+	display: flex;
+	gap: 16px;
+	margin: 16px 0px 0px 16px;
+
+	align-self: flex-start;
+}
+
+.sys-buttons button {
+	width: 24px;
+	height: 24px;
+	border-radius: 500px;
+	border-style: none;
+}
+
+.red {
+	background: #ff5f57;
+}
+.yellow {
+	background: #febc2e;
+}
+.green {
+	background: #27c840;
+}
+
+.result {
+	margin: 0px 28px 10px 0px;
+	/* font-size: 96px; */
+	font-size: 6rem;
+	width: 2em;
+	align-self: flex-end;
+}
+
+.buttons {
+	display: grid;
+	grid-template-columns: repeat(4, 1fr);
+	grid-template-rows: repeat(5, 1fr);
+	height: 100%;
+
+	grid-template-areas:
+		"special special special operator"
+		"number number number operator"
+		"number number number operator"
+		"number number number operator"
+		"number number number operator";
+}
+
+/* all buttons */
+.special,
+.number,
+.dot,
+.operator {
+	border-style: solid;
+	border-color: #454647;
+	border-width: 1px;
+	color: white;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	font-size: 46px;
+}
+
+.specials {
+	grid-area: special;
+	display: flex;
+}
+
+.special {
+	background: #575859;
+	flex: 1;
+	font-size: 38px;
+}
+
+.numbers {
+	grid-area: number;
+
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(4, 1fr);
+}
+
+.number,
+.dot {
+	background: #737474;
+}
+
+.zero {
+	grid-column: 1 / 3;
+	grid-row: 4 / 5;
+}
+
+.operators {
+	grid-area: operator;
+
+	display: flex;
+	flex-direction: column-reverse;
+}
+
+.operator {
+	background: #ff9f09;
+	flex: 1;
+}
+
+.screen {
+	height: 25%;
+	background: #454647;
+}
