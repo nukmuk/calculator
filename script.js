@@ -37,15 +37,18 @@ for (const btn of operators) {
 	btn.addEventListener("click", () => {
 		const btnOperation = btn.classList[1];
 		console.log(`click operator, pstate: ${state.pendingOperation}`);
+
+		state.inputtingB = true;
 		if (state.pendingOperation) {
-			b = state.displayValue;
+			if (state.inputtingB) {
+				b = state.displayValue;
+			}
 			a = finalizePending();
 		} else {
 			a = state.displayValue;
 		}
 		state.pendingOperation = btnOperation;
 		state.clearOnNextPress = true;
-		state.inputtingB = true;
 
 		console.log(`after op, a: ${a}`);
 		console.log(`after op, b: ${b}`);
@@ -74,6 +77,8 @@ function finalizePending() {
 	const op = state.pendingOperation;
 	const result = operate(op, a, b);
 	a = result;
+	setDisplayValue(result);
+	state.pendingOperation = undefined;
 	return result;
 }
 
