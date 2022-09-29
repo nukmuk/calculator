@@ -14,9 +14,18 @@ const numbers = document.querySelectorAll(".number");
 for (const btn of numbers) {
 	btn.addEventListener("click", () => {
 		const digit = btn.innerText;
-		numberPressed(digit);
+		addToDisplay(digit);
 	});
 }
+
+// dot events
+document.querySelector(".dot").addEventListener("click", () => {
+	if (String(state.displayValue).includes(".") && !state.clearOnNextPress) {
+		console.log("already decimal");
+		return;
+	}
+	addToDisplay(".");
+});
 
 // clear key event
 const clearBtn = document.querySelector(".clear");
@@ -62,7 +71,8 @@ for (const btn of operators) {
 const equalsBtn = document.querySelector(".equals");
 equalsBtn.addEventListener("click", () => {
 	if (!state.inputtingB) {
-		return console.log("useless equals");
+		setDisplayValue(Number(state.displayValue));
+		return console.log("equals");
 	}
 	b = state.displayValue;
 	const result = finalizePending();
@@ -90,16 +100,20 @@ function finalizePending() {
 	return result;
 }
 
-function numberPressed(number) {
-	if (state.displayValue == 0 || state.clearOnNextPress) {
-		setDisplayValue(`${number}`);
+function addToDisplay(char) {
+	if (state.displayValue == "0" || state.clearOnNextPress) {
+		setDisplayValue(`${char}`);
 		state.clearOnNextPress = false;
 	} else {
-		setDisplayValue(`${state.displayValue}${number}`);
+		setDisplayValue(`${state.displayValue}${char}`);
 	}
 }
 
 function setDisplayValue(value) {
+	if (value == ".") {
+		value = "0.";
+	}
+
 	console.log(`setting display to: ${value}`);
 	const length = String(value).length;
 	let fontSize = 96;
