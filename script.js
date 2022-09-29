@@ -29,6 +29,7 @@ clearBtn.addEventListener("click", () => {
 	state.memory = 0;
 	a = 0;
 	b = 0;
+	changeKeyColor();
 });
 
 // operator key events
@@ -50,6 +51,8 @@ for (const btn of operators) {
 		state.pendingOperation = btnOperation;
 		state.clearOnNextPress = true;
 
+		changeKeyColor();
+
 		console.log(`after op, a: ${a}`);
 		console.log(`after op, b: ${b}`);
 	});
@@ -65,6 +68,7 @@ equalsBtn.addEventListener("click", () => {
 	const result = finalizePending();
 	setDisplayValue(result);
 	state.inputtingB = false;
+	changeKeyColor();
 });
 
 // functions
@@ -73,6 +77,10 @@ function finalizePending() {
 	console.log(state);
 	console.log(`f a: ${a}`);
 	console.log(`f b: ${b}`);
+
+	if (state.pendingOperation == "divide" && b == 0) {
+		return "nt";
+	}
 
 	const op = state.pendingOperation;
 	const result = operate(op, a, b);
@@ -92,6 +100,7 @@ function numberPressed(number) {
 }
 
 function setDisplayValue(value) {
+	console.log(`setting display to: ${value}`);
 	const length = String(value).length;
 	let fontSize = 96;
 
@@ -127,5 +136,16 @@ function operate(operation, x, y) {
 		default:
 			console.log(`Invalid operation: ${operation}`);
 			break;
+	}
+}
+
+function changeKeyColor() {
+	const buttons = document.querySelectorAll(".operator");
+	for (const btn of buttons) {
+		if (btn.classList.contains(state.pendingOperation)) {
+			btn.style.background = "#cc7f07";
+		} else {
+			btn.style.background = "#ff9f09";
+		}
 	}
 }
