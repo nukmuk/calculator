@@ -1,6 +1,7 @@
 body {
 	/* background-color: #151515; */
-	background-color: #333333;
+	/* background-color: #333333; */
+	background-color: #36393f;
 	color: white;
 	user-select: none;
 }
@@ -147,6 +148,10 @@ body {
 	font-size: 38px;
 }
 
+.special:active {
+	background: #505050;
+}
+
 .numbers {
 	grid-area: number;
 
@@ -158,6 +163,11 @@ body {
 .number,
 .dot {
 	background: #737474;
+}
+
+.number:active,
+.dot:active{
+	background: #828585;
 }
 
 .zero {
@@ -176,4 +186,8 @@ body {
 .equals {
 	background: #ff9f09;
 	flex: 1;
+}
+
+.equals:active{
+	background: #cc7f07;
 }
